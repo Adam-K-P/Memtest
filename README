@@ -1,0 +1,16 @@
+Adam Pinarbasi
+
+mem_test
+
+
+Memory corruption test
+______________________
+
+mem_test tests for memory corruption with the established method used by 
+mm/memtest.c.
+
+Namely, it writes a pattern to an address then reads back the data at that
+address.  If the data at the address matches the data originally written
+to the address, then the memory is fine -- if the data differs from the 
+tested pattern though, the memory is corrupted.
+
