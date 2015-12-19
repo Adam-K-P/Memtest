@@ -1,0 +1,10 @@
+#!/usr/bin/perl
+#unload_module
+#unloads mem_test module from /dev
+#requires sudo
+
+use strict;
+use warnings;
+
+chdir '/dev';
+system 'sudo rm mem_test';

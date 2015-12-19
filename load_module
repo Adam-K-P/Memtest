@@ -1,0 +1,22 @@
+#!/usr/bin/perl
+#load_module
+#loads a module into /dev
+#requires sudo 
+
+use strict;
+use warnings;
+
+sub trim { my $s = shift; $s =~ s/^\s+|\s+$//g; return $s; }
+
+system "make && sudo make ins";
+my @dmesg = qx(dmesg);
+my $temp;
+my $major_number;
+($temp, $major_number) = split ("is", $dmesg[-1], 2);
+$major_number = trim $major_number;
+my $command = "sudo mknod mem_test c ";
+$command = $command . $major_number . ' 0';
+chdir '/dev';
+system $command;
+
+
